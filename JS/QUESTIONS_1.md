@@ -4,7 +4,7 @@
 
 1. [What is event delegation, and how does it function in JavaScript?](#event-delegation-js)
 
-2. Can you provide an illustration of how ES6 has altered the approach to working with "this" in JavaScript?
+2. [Can you provide an illustration of how ES6 has altered the approach to working with "this" in JavaScript?](#es6-and-this)
 
 3. Explain the concept of prototypal inheritance.
 
@@ -73,7 +73,7 @@
 
 <b>1. Event Delegation in JS</b>
 </br>
-<a name="event-delegation-js">
+<a name="event-delegation-js" style="text-decoration: none;">
 Event delegation is a technique in javascript where instead of handling individual events on child elements, you add a handler on the parent which handles events for all the child elements. This technique works on the concept of event bubbling where an event object gets created when an event occurs and travels down to the target object and then bubbles up. It is in the bubbling phase that the event is caught by the event listener attached to the parent. **It can prove to be optimal as it reduces the need of attaching a lot of event listeners which can make the application slow**
 
 ```html
@@ -89,3 +89,54 @@ Event delegation is a technique in javascript where instead of handling individu
 ```
 
 </a>
+
+<a name="top">Back to top ⬆️</a>
+
+<b>2. ES6 and the this keyword</b>
+</br>
+<a name="es6-and-this" style="text-decoration: none;">
+ES6 introduced several features that has affected how developers work with the <b>this</b> keyword in Javascript, particularly with the introduction of <b>arrow functions</b> and <b>lexical scoping</b>
+
+<li><b>Arrow Functions</b</li>
+Arrow functions don't get their own <b>this</b> keyword and inside these functions, the <b>this</b> keyword is lexically scoped, that is, it inherits the <b>this</b> value from the surrounding code.
+
+```javascript
+let obj = {
+  name: "faheem",
+  age: 25,
+
+  func1() {
+    console.log(this.name);
+
+    const new_func = () => console.log(this.age);
+    const new_func_1 = function () {
+      console.log(this.age);
+    };
+
+    new_func();
+    new_func_1();
+  },
+
+  func2: () => {
+    console.log(this.age);
+  },
+};
+
+obj.func1();
+//faheem
+//25
+//undefined
+obj.func2();
+//undefined
+```
+
+<b>Explanation</b>
+</br>
+When <b>func1</b> is called by the obj, the <b>this</b> inside the <b>func1</b> points to the <b>obj</b> where as the <b>new_func</b> being an arrow function doesn't get it's own <b>this</b> keyword, gets it from the surrounding code where <b>this===obj</b>.
+</br>
+In case of <b>new_func_1</b>, it is a normal function and it is invoked normally and as such the <b>this</b> keyword inside the <b>new_func_1</b> is undefined.
+</br>
+In case of <b>func2</b>, <b>this</b> inside <b>func2</b> points to the global object and as such <b>this</b>.age is undefined.
+</a>
+
+<a name="top">Back to top ⬆️</a>
