@@ -1,4 +1,6 @@
-# [Interview Questions](#top)
+<a name="top"></a>
+
+<h1>Interview Questions</h1>
 
 1. [What is event delegation, and how does it function in JavaScript?](#event-delegation-js)
 
@@ -88,7 +90,7 @@ Event delegation is a technique in javascript where instead of handling individu
 
 </a>
 
-<a name="top">Back to top ⬆️</a>
+[Back to top ⬆️](#top)
 
 <b>2. ES6 and the this keyword</b>
 </br>
@@ -138,4 +140,4 @@ In case of <b>new_func_1</b>, it is a normal function and it is invoked normally
 In case of <b>func2</b>, <b>this</b> inside <b>func2</b> points to the global object and as such <b>this</b>.age is undefined.
 </a>
 
-<a name="top">Back to top ⬆️</a>
+[Back to top ⬆️](#top)
