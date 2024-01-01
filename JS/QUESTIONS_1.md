@@ -1,6 +1,6 @@
 # Interview Questions
 
-<a name="top"></a>
+[#top]
 
 1. [What is event delegation, and how does it function in JavaScript?](#event-delegation-js)
 
