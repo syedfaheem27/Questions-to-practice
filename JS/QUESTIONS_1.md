@@ -71,9 +71,8 @@
 
 # Answers/Solutions
 
-<a name="event-delegation-js"> 
-<b>1.  Event Delegation in JS</b>
-
+<b>1. Event Delegation in JS</b>
+<a name="event-delegation-js">
 Event delegation is a technique in javascript where instead of handling individual events on child elements, you add a handler on the parent which handles events for all the child elements. This technique works on the concept of event bubbling where an event object gets created when an event occurs and travels down to the target object and then bubbles up. It is in the bubbling phase that the event is caught by the event listener attached to the parent. **It can prove to be optimal as it reduces the need of attaching a lot of event listeners which can make the application slow**
 
 ```html
