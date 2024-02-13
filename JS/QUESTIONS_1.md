@@ -1,12 +1,12 @@
 <a name="top"></a>
 
-<h1>Interview Questions</h1>
+# Interview Questions
 
 1. [What is event delegation, and how does it function in JavaScript?](#event-delegation-js)
 
 2. [Can you provide an illustration of how ES6 has altered the approach to working with "this" in JavaScript?](#es6-and-this)
 
-3. Explain the concept of prototypal inheritance.
+3. [Explain the concept of prototypal inheritance.](#prototypal-inheritance)
 
 4. Differentiate between a variable that is null, undefined, or undeclared.
 
@@ -71,17 +71,20 @@
 
 # Answers/Solutions
 
-<b>1. Event Delegation in JS</b>
+**1. Event Delegation in JS**
 </br>
-<a name="event-delegation-js">
-Event delegation is a technique in javascript where instead of handling individual events on child elements, you add a handler on the parent which handles events for all the child elements. This technique works on the concept of event bubbling where an event object gets created when an event occurs and travels down to the target object and then bubbles up. It is in the bubbling phase that the event is caught by the event listener attached to the parent. **It can prove to be optimal as it reduces the need of attaching a lot of event listeners which can make the application slow**
+<a name="event-delegation-js" style="text-decoration: none">
+Event delegation is a technique in javascript where instead of handling individual events on child elements, you add a handler on the parent which handles events for all the child elements. This technique works on the concept of event bubbling where an event object gets created when an event occurs and travels down to the target object and then bubbles up. It is in the bubbling phase that the event is caught by the event listener attached to the parent.</br>
+<b>It can prove to be optimal as it reduces the need of attaching a lot of event listeners which can make the application slow</b>
 
 ```html
 <div id="parent">
-  <button>child1</button><button>child2</button><button>child3</button>
+  <button>child1</button><button>child2</button
+  ><button>child3</button>
 </div>
 <script>
-  const parent = document.getElementById("parent");
+  const parent =
+    document.getElementById("parent");
   parent.addEventListener("click", (e) => {
     alert(e.target.textContent);
   });
@@ -92,14 +95,14 @@ Event delegation is a technique in javascript where instead of handling individu
 
 [Back to top ⬆️](#top)
 
-<b>2. ES6 and the this keyword</b>
+**2. ES6 and the this keyword**
 </br>
-<a name="es6-and-this">
-ES6 introduced several features that has affected how developers work with the <b>this</b> keyword in Javascript, particularly with the introduction of <b>arrow functions</b> and <b>lexical scoping</b>
+<a name="es6-and-this" style="text-decoration: none">
+ES6 introduced several features that has affected how developers work with the this keyword in Javascript, particularly with the introduction of arrow functions and lexical scoping
 
-<li><b>Arrow Functions</b</li>
+<li><b>Arrow Functions</b></li>
 </br>
-Arrow functions don't get their own <b>this</b> keyword and inside these functions, the <b>this</b> keyword is lexically scoped, that is, it inherits the <b>this</b> value from the surrounding code.
+Arrow functions don't get their own this keyword and inside these functions, the this keyword is lexically scoped, that is, it inherits the this value from the surrounding code.
 
 ```javascript
 let obj = {
@@ -131,13 +134,81 @@ obj.func2();
 //undefined
 ```
 
-<b>Explanation</b>
+**Explanation**
 </br>
-When <b>func1</b> is called by the obj, the <b>this</b> inside the <b>func1</b> points to the <b>obj</b> where as the <b>new_func</b> being an arrow function doesn't get it's own <b>this</b> keyword, gets it from the surrounding code where <b>this===obj</b>.
+When func1 is called by the obj, the this inside the func1 points to the obj where as the new_func being an arrow function doesn't get it's own this keyword, gets it from the surrounding code where this===obj.
 </br>
-In case of <b>new_func_1</b>, it is a normal function and it is invoked normally and as such the <b>this</b> keyword inside the <b>new_func_1</b> is undefined.
+In case of new_func_1, it is a normal function and it is invoked normally and as such the this keyword inside the new_func_1 is undefined.
 </br>
-In case of <b>func2</b>, <b>this</b> inside <b>func2</b> points to the global object and as such <b>this</b>.age is undefined.
+In case of func2, this inside func2 points to the global object and as such this.age is undefined.
 </a>
+
+[Back to top ⬆️](#top)
+
+**3. Prototypal inheritance in JS**
+
+<a name="prototypal-inheritance" style="text-decoration: none">
+The general concept of inheritance is to extend a property or a method from a parent down to it's children.
+Prototypal inheritance is the linking of prototypes of a parent object to share the properties 
+and methods of a parent class with child classes.Prototypes are hidden objects that are used to share properties and 
+methods from a parent class to it's child classes.
+
+**[[Prototype]]**
+In JavaScript, objects have a special hidden property `[[Prototype]]`, that is either null or references another object. That object is called **“a prototype”**.
+
+When we read a property from an `object`, and it’s missing, JavaScript automatically takes it from the prototype. In programming, this is called **“prototypal inheritance”**.
+
+The property `[[Prototype]]` is internal and hidden, but there are many ways to set it.
+
+One of them is to use the special name `__proto__`. Few things to consider about `__proto__`:
+
+- It is a getter/setter for the `[[Prototype]]` object but is deprecated.
+- It can either be an object or null.
+- We can't have circular referrences. Javascript will throw an error if we try to do so.
+
+Javascript recommends to use `Object.getPrototypeOf/Object.setPrototypeOf` functions instead that get/set the prototype.
+
+<img src="./assets/proto-inheritance.png" style="width: 45rem">
+
+```javascript
+let animal = {
+  eats: true,
+  walk() {
+    alert("Animal walk");
+  },
+};
+
+let rabbit = {
+  jumps: true,
+  __proto__: animal,
+};
+
+let longEar = {
+  earLength: 10,
+  __proto__: rabbit,
+};
+
+// walk is taken from the prototype chain
+longEar.walk(); // Animal walk
+
+alert(longEar.jumps); // true (from rabbit)
+```
+
+**Summary**
+
+- In JavaScript, all objects have a hidden `[[Prototype]]` property that’s either another object or null.
+
+- We can use obj.**proto** to access it (a historical getter/setter).
+
+- The object referenced by `[[Prototype]]` is called a “prototype”.
+
+- If we want to read a property of obj or call a method, and it doesn’t exist, then JavaScript tries to find it in the prototype.
+
+- Write/delete operations act directly on the object, they don’t use the prototype (assuming it’s a data property, not a setter).
+
+- If we call obj.method(), and the method is taken from the prototype, this still references obj. So methods always work with the current object even if they are inherited.
+
+- The `for..in` loop iterates over both its own and its inherited properties. All other `key/value-getting methods` only operate on the object itself.
+  </a>
 
 [Back to top ⬆️](#top)
