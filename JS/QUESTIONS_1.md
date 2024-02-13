@@ -8,9 +8,9 @@
 
 3. [Explain the concept of prototypal inheritance.](#prototypal-inheritance)
 
-4. Differentiate between a variable that is null, undefined, or undeclared.
+4. [Differentiate between a variable that is null, undefined, or undeclared.](#null-undef-undec)
 
-5. Define what a closure is and describe its uses and advantages.
+5. [Define what a closure is and describe its uses and advantages.](#closures)
 
 6. Explain the primary distinction between the Array.forEach() loop and Array.map() method, as well as when to choose one over the other.(see polyfills also)
 
@@ -212,3 +212,125 @@ alert(longEar.jumps); // true (from rabbit)
   </a>
 
 [Back to top ⬆️](#top)
+
+**4. Null, Undefined and Undeclared variables in JS.**
+
+<a name="null-undef-undec" style="text-decoration:none">
+
+- `Null`: Represents an intentional absence of a value.It is a value that has to be explicitly assigned to a variable.
+
+```javascript
+let example = null;
+console.log(example); // Output: null
+```
+
+- `Undefined`: A variable that has been declared but has not been assigned any value. When you declare a variable
+  without assigning a value to it, JavaScript automatically initializes it with undefined.
+  **This is the reason why `const` variables always need to be intialised at the time of declaration.**
+
+```javascript
+let example;
+console.log(example); // Output: undefined
+```
+
+- `Undeclared` : A variable that has been used without being declared using `var`, `let`, or `const`. This often
+  leads to a ReferenceError in JavaScript.
+
+```javascript
+console.log(a); //Referrence Error: a is not defined
+```
+
+</a>
+
+[Back to top ⬆️](#top)
+
+**5. Closures in JS**
+
+<a name="closures" style="text-decoration: none;">
+
+A fundamental concept in JS that refers to the ability of a function to close over or retain the referrences of
+it's outer scope even if the outer function's execution has finished. So, in other words, a closure allows a
+function to **"close over"** and capture the environment in which it was created.
+
+**Example**
+
+```javascript
+function a() {
+  const variable = "hello";
+
+  return () => {
+    console.log(variable);
+  };
+}
+
+const b = a();
+b(); //hello will be logged onto the system console
+```
+
+**Uses** - It has a lot of uses but the most important ones are :
+
+- Encapsulation and Data Privacy:
+
+  Closures allow you to create private variables and methods by enclosing them within a function.
+  This helps in preventing direct access to these variables from the outside world, achieving a
+  level of encapsulation and data privacy.
+
+  ```javascript
+  function counter() {
+    let _count = 0;
+
+    return {
+      increment() {
+        _count++;
+      },
+      decrement(){
+        _count--;
+      }
+      get count(){
+        console.log(count);
+        return count;
+      }
+    };
+  }
+
+  const counterFunc = counter();
+  counterFunc.increment();
+  counterFunc.increment();
+  counterFunc.increment();
+
+  let curr_count = counterFunc.count;
+  console.log(curr_count);//3
+
+  counterFunc.decrement();
+  counterFunc.decrement();
+
+  curr_count = counterFunc.count;
+  console.log(curr_count);/1
+
+  ```
+
+- Function currying and partial application
+
+  Closures enable the creation of functions with preset arguments, leading to partial application and currying.
+
+  ```javascript
+  function multiply(a, b, c) {
+    return a * b * c;
+  }
+
+  function curryMultiply(a) {
+    return function (b) {
+      return function (c) {
+        return a * b * c;
+      };
+    };
+  }
+
+  const double = curryMultiply(2)(1);
+  const triple = curryMultiply(3)(1);
+
+  console.log(double(6)); //12
+  console.log(triple(5)); //15
+  ```
+
+</a>
