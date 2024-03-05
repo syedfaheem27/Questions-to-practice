@@ -1,3 +1,11 @@
+<style>
+a{
+  text-decoration:none;
+}
+
+
+</style>
+
 <a name="top"></a>
 
 # Interview Questions
@@ -73,7 +81,7 @@
 
 **1. Event Delegation in JS**
 </br>
-<a name="event-delegation-js" style="text-decoration: none">
+<a name="event-delegation-js" >
 Event delegation is a technique in javascript where instead of handling individual events on child elements, you add a handler on the parent which handles events for all the child elements. This technique works on the concept of event bubbling where an event object gets created when an event occurs and travels down to the target object and then bubbles up. It is in the bubbling phase that the event is caught by the event listener attached to the parent.</br>
 <b>It can prove to be optimal as it reduces the need of attaching a lot of event listeners which can make the application slow</b>
 
@@ -97,7 +105,7 @@ Event delegation is a technique in javascript where instead of handling individu
 
 **2. ES6 and the this keyword**
 </br>
-<a name="es6-and-this" style="text-decoration: none">
+<a name="es6-and-this" >
 ES6 introduced several features that has affected how developers work with the this keyword in Javascript, particularly with the introduction of arrow functions and lexical scoping
 
 <li><b>Arrow Functions</b></li>
@@ -147,7 +155,7 @@ In case of func2, this inside func2 points to the global object and as such this
 
 **3. Prototypal inheritance in JS**
 
-<a name="prototypal-inheritance" style="text-decoration: none">
+<a name="prototypal-inheritance" >
 The general concept of inheritance is to extend a property or a method from a parent down to it's children.
 Prototypal inheritance is the linking of prototypes of a parent object to share the properties 
 and methods of a parent class with child classes.Prototypes are hidden objects that are used to share properties and 
@@ -335,6 +343,8 @@ b(); //hello will be logged onto the system console
 
 </a>
 
+[Back to top ⬆️](#top)
+
 **6. Array.forEach() & Array.map()**
 
 <a id="map&forEach" style="text-decoration:none">
@@ -365,3 +375,5 @@ However, there are certain differences. These are:
 4.  `forEach()` can be used on a nodelist where as `map()` can't be.
 
 </a>
+
+[Back to top ⬆️](#top)
