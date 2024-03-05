@@ -12,7 +12,7 @@
 
 5. [Define what a closure is and describe its uses and advantages.](#closures)
 
-6. Explain the primary distinction between the Array.forEach() loop and Array.map() method, as well as when to choose one over the other.(see polyfills also)
+6. [Explain the primary distinction between the Array.forEach() loop and Array.map() method, as well as when to choose one over the other.](#map&forEach)
 
 7. What is a common scenario for employing anonymous functions?
 
@@ -332,5 +332,36 @@ b(); //hello will be logged onto the system console
   console.log(double(6)); //12
   console.log(triple(5)); //15
   ```
+
+</a>
+
+**6. Array.forEach() & Array.map()**
+
+<a id="map&forEach" style="text-decoration:none">
+
+Both are methods to iterate over arrays and both take a callback, which is invoked by
+the method itself. These methods and their callbacks have a similar function signature,
+that is, `map(callbackFn, thisArg), forEach(callbackFn, thisArg)` and for the callback,
+the function signature is `function(element,index,array)`
+
+However, there are certain differences. These are:
+
+1.  The returning value
+    The `forEach()` method returns undefined and `map()` returns a new array with the transformed elements.
+
+2.  Method Chaining
+    `map()` is chainable where as `forEach()` isn't as the latter returns undefined and the former returns a new
+    array.
+
+3.  Mutability
+    `forEach()` does not mutate the array on which it is called. (However, `callback` may do so).
+    You can make use of the index and the array that is being passed into the callback to mutate the
+    original array.
+
+    `map()` does not mutate the array on which it is called (although `callback`, if invoked, may do so).
+    Here, also you can mutate the original array by making use of the index and the array itself which gets
+    passed into the callback.
+
+4.  `forEach()` can be used on a nodelist where as `map()` can't be.
 
 </a>
