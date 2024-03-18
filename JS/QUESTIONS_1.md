@@ -1,11 +1,3 @@
-<style>
-a{
-  text-decoration:none;
-}
-
-
-</style>
-
 <a name="top"></a>
 
 # Interview Questions
@@ -73,9 +65,11 @@ a{
 
 31. Discuss the benefits of using spread syntax and differentiate it from rest syntax.
 
-- Explain debounce vs throttling.
-- Define what a promise is and describe its applications.
-- Explore how Object-Oriented Programming (OOP) principles can be applied when coding in JavaScript.
+32. [Explain debounce vs throttling.](#throttleVSdebounce)
+
+33. Define what a promise is and describe its applications.
+
+34. Explore how Object-Oriented Programming (OOP) principles can be applied when coding in JavaScript.
 
 # Answers/Solutions
 
@@ -223,7 +217,7 @@ alert(longEar.jumps); // true (from rabbit)
 
 **4. Null, Undefined and Undeclared variables in JS.**
 
-<a name="null-undef-undec" style="text-decoration:none">
+<a name="null-undef-undec" >
 
 - `Null`: Represents an intentional absence of a value.It is a value that has to be explicitly assigned to a variable.
 
@@ -254,7 +248,7 @@ console.log(a); //Referrence Error: a is not defined
 
 **5. Closures in JS**
 
-<a name="closures" style="text-decoration: none;">
+<a name="closures" >
 
 A fundamental concept in JS that refers to the ability of a function to close over or retain the referrences of
 it's outer scope even if the outer function's execution has finished. So, in other words, a closure allows a
@@ -347,7 +341,7 @@ b(); //hello will be logged onto the system console
 
 **6. Array.forEach() & Array.map()**
 
-<a id="map&forEach" style="text-decoration:none">
+<a id="map&forEach" >
 
 Both are methods to iterate over arrays and both take a callback, which is invoked by
 the method itself. These methods and their callbacks have a similar function signature,
@@ -377,3 +371,22 @@ However, there are certain differences. These are:
 </a>
 
 [Back to top ⬆️](#top)
+
+**32. Throttle vs Debounce**
+
+<a id="throttleVSdebounce">
+
+1.  Throttle : An optimisation technique that limits the execution of a function at once in
+    every specified time interval. **Example** - Updating the layout while resizing the window,
+    we can throttle the `updateLayout` function in order to prevent the page from becoming
+    unresponsive and cranky.
+
+2.  Debounce: An optimisation texhnique that delays the execution of a function until the user
+    stops performing a ceratin action for a specified amount of time. **Example** -A function
+    that fetches suggestions from an endpoint when the input gets changed makes way too many
+    network requests and thus to avoid this, we can debounce it.
+
+[Implementing debouncing and throttling in Javascript](./throttleVsdebounce-js.js)
+
+[Implementing debouncing and throttling in React](./throttleVSdebounce-react.jsx)
+</a>
