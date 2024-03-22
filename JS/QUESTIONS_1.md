@@ -14,7 +14,7 @@
 
 6. [Explain the primary distinction between the Array.forEach() loop and Array.map() method, as well as when to choose one over the other.](#map&forEach)
 
-7. What is a common scenario for employing anonymous functions?
+7. [What is a common scenario for employing anonymous functions?](#anonymous-fn)
 
 8. Distinguish between host objects and native objects.
    -Clarify the distinctions among 'function User(){}', 'var user = User()', and 'var user = new User()
@@ -372,6 +372,46 @@ However, there are certain differences. These are:
 
 [Back to top ⬆️](#top)
 
+**7. Anonymous function use cases**
+<a id="anonymous-fn">
+There are a lot of use cases for employing anonymous functions(nameless functions) and
+these are :
+
+1.  Assigning a function to a variable
+
+```javascript
+const add = function (a, b) {
+  return a + b;
+};
+```
+
+2.  Defining IIFE's(Immediately Invoked function expressions)
+
+```javascript
+(function () {
+  console.log("init");
+  //Initialization done here
+})();
+```
+
+3.  Passing as Callbacks to Higher Order functions or Registering Handler functions
+
+```javascript
+//Attaching an event handler
+btn.addEventListener("click", function () {
+  console.log("clicked");
+});
+
+const nums = [1, 2, 3, 4];
+const transformedNums = nums.map(function (el) {
+  return el * 2;
+});
+```
+
+</a>
+
+[Back to top ⬆️](#top)
+
 **32. Throttle vs Debounce**
 
 <a id="throttleVSdebounce">
@@ -390,3 +430,5 @@ However, there are certain differences. These are:
 
 [Implementing debouncing and throttling in React](./throttleVSdebounce-react.jsx)
 </a>
+
+[Back to top ⬆️](#top)
